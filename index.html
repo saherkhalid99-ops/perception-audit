@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buyer Perception Audit | Safia Saher</title>
+<meta name="description" content="Find the exact gap between what you signal on LinkedIn and what buyers actually receive — before they ever land in your DMs. Free 3-minute audit.">
+
+<!-- Open Graph / LinkedIn preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Buyer Perception Audit | Safia Saher">
+<meta property="og:description" content="Find the exact gap between what you signal on LinkedIn and what buyers actually receive — before they ever land in your DMs. Free 3-minute audit.">
+<meta property="og:image" content="https://safiaperceptionaudit.netlify.app/preview.png">
+<meta property="og:url" content="https://safiaperceptionaudit.netlify.app/">
+
+<!-- Twitter card (some platforms fall back to this) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Buyer Perception Audit | Safia Saher">
+<meta name="twitter:description" content="Find the exact gap between what you signal on LinkedIn and what buyers actually receive — before they ever land in your DMs.">
+<meta name="twitter:image" content="https://safiaperceptionaudit.netlify.app/preview.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --gold:#D4AF6A;
+    --gold-bright:#E8C77E;
+    --black:#0A0A0A;
+    --panel:#141414;
+    --text-soft:#B8B8B8;
+    --border:#2A2A2A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--black);
+    color:#EDEDED;
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    padding:0 0 4rem;
+  }
+  .container{max-width:720px;margin:0 auto;padding:0 1.25rem}
+
+  header{
+    text-align:center;
+    padding:3.5rem 1.25rem 2.5rem;
+    border-bottom:0.5px solid var(--border);
+    margin-bottom:2rem;
+  }
+  header h1{
+    font-family:'Playfair Display',serif;
+    font-weight:500;
+    font-size:clamp(28px,5vw,40px);
+    color:var(--gold-bright);
+    letter-spacing:.01em;
+    margin-bottom:.6rem;
+  }
+  header p{color:var(--text-soft);font-size:15px;max-width:480px;margin:0 auto}
+  .byline{margin-top:1.25rem;font-size:12px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+
+  .section{
+    background:var(--panel);
+    border:0.5px solid var(--border);
+    border-radius:14px;
+    padding:1.5rem;
+    margin-bottom:1.25rem;
+  }
+  .sec-title{
+    font-size:12px;
+    font-weight:600;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    margin-bottom:1.25rem;
+  }
+  label{display:block;font-size:13px;color:var(--text-soft);margin-bottom:6px}
+  textarea, input[type=text], input[type=email]{
+    width:100%;
+    background:#1C1C1C;
+    border:0.5px solid var(--border);
+    border-radius:8px;
+    color:#EDEDED;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    padding:11px 12px;
+    margin-bottom:14px;
+    resize:vertical;
+  }
+  textarea{min-height:64px}
+  textarea:focus, input:focus{outline:none;border-color:var(--gold)}
+  ::placeholder{color:#6B6B6B}
+
+  .radio-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .radio-btn{
+    padding:7px 16px;
+    border:0.5px solid var(--border);
+    border-radius:20px;
+    font-size:13px;
+    cursor:pointer;
+    background:#1C1C1C;
+    color:#D0D0D0;
+    transition:.15s;
+  }
+  .radio-btn.active{background:rgba(212,175,106,0.15);border-color:var(--gold);color:var(--gold-bright)}
+
+  .run-btn{
+    width:100%;
+    padding:15px;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.02em;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--gold),#B8924E);
+    color:#0A0A0A;
+    cursor:pointer;
+    margin-top:.5rem;
+  }
+  .run-btn:hover{opacity:.92}
+  .run-btn:disabled{opacity:.5;cursor:not-allowed}
+
+  .results{display:none}
+  .score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem}
+  .score-card{background:#1C1C1C;border-radius:10px;padding:1rem .5rem;text-align:center;border:0.5px solid var(--border)}
+  .score-num{font-family:'Playfair Display',serif;font-size:30px;color:var(--gold-bright)}
+  .score-label{font-size:11px;color:var(--text-soft);margin-top:4px;text-transform:uppercase;letter-spacing:.05em}
+
+  .signal-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .signal-name{font-size:12.5px;color:var(--text-soft);min-width:150px;flex-shrink:0}
+  .bar-track{flex:1;height:6px;background:#1C1C1C;border-radius:3px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#8a6a2e,var(--gold-bright));transition:width .8s ease}
+  .bar-score{font-size:12px;color:var(--text-soft);min-width:26px;text-align:right}
+
+  .insight-block{
+    border-left:2px solid var(--gold);
+    padding:.85rem 1rem;
+    margin-bottom:.75rem;
+    background:#1C1C1C;
+    border-radius:0 8px 8px 0;
+  }
+  .insight-title{font-size:13.5px;font-weight:600;color:#EDEDED;margin-bottom:4px}
+  .insight-text{font-size:13px;color:var(--text-soft);line-height:1.55}
+
+  .gap-tag{display:inline-block;font-size:11px;padding:3px 12px;border-radius:20px;margin:0 6px 6px 0}
+  .gap-high{background:rgba(216,98,98,.15);color:#E07F7F}
+  .gap-med{background:rgba(212,175,106,.15);color:var(--gold-bright)}
+  .gap-low{background:rgba(110,180,140,.15);color:#8FCBA8}
+
+  .cta-block{
+    text-align:center;
+    margin-top:2rem;
+    padding:1.75rem 1.25rem;
+    border:0.5px solid var(--gold);
+    border-radius:14px;
+    background:rgba(212,175,106,0.06);
+  }
+  .cta-block h3{font-family:'Playfair Display',serif;color:var(--gold-bright);font-size:20px;margin-bottom:.5rem}
+  .cta-block p{font-size:13.5px;color:var(--text-soft);margin-bottom:1.25rem}
+  .cta-btn{
+    display:inline-block;
+    padding:12px 28px;
+    background:var(--gold-bright);
+    color:#0A0A0A;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+  }
+
+  .gate{display:flex;flex-direction:column;gap:0}
+  .footer-note{text-align:center;font-size:12px;color:#555;margin-top:2.5rem}
+  hr.divider{border:none;border-top:0.5px solid var(--border);margin:1.5rem 0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="byline">SILENT LINKEDIN PARTNER</div>
+  <h1>The Buyer Perception Audit</h1>
+  <p>Find the exact gap between what you intend to signal on LinkedIn and what buyers actually receive — before they ever land in your DMs.</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <div class="sec-title">Step 1 — Your intended positioning</div>
+    <label>Your headline / what you say you do</label>
+    <textarea id="headline" placeholder="e.g. I help founders stop losing clients to unclear positioning"></textarea>
+    <label>Who is your ideal client?</label>
+    <textarea id="icp" placeholder="e.g. Founders who are active on LinkedIn but not converting visibility into clients" style="min-height:50px"></textarea>
+    <label>What outcome do they get from working with you?</label>
+    <textarea id="outcome" placeholder="e.g. A LinkedIn presence that converts without burning them out" style="min-height:50px"></textarea>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">Step 2 — Your last 5 posts (topics or opening lines)</div>
+    <textarea id="p1" placeholder="Post 1" style="min-height:46px"></textarea>
+    <textarea id="p2" placeholder="Post 2" style="min-height:46px"></textarea>
+    <textarea id="p3" placeholder="Post 3" style="min-height:46px"></textarea>
+    <textarea id="p4" placeholder="Post 4" style="min-height:46px"></textarea>
+    <textarea id="p5" placeholder="Post 5" style="min-height:46px"></textarea>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">Step 3 — Engagement signals</div>
+
+    <label>Average comments per post</label>
+    <div class="radio-row" id="comments-row">
+      <div class="radio-btn active" data-val="0">0–5</div>
+      <div class="radio-btn" data-val="1">6–15</div>
+      <div class="radio-btn" data-val="2">16–40</div>
+      <div class="radio-btn" data-val="3">40+</div>
+    </div>
+
+    <label>Do comments lead to DMs?</label>
+    <div class="radio-row" id="dms-row">
+      <div class="radio-btn active" data-val="0">Rarely / never</div>
+      <div class="radio-btn" data-val="1">Sometimes</div>
+      <div class="radio-btn" data-val="2">Often</div>
+    </div>
+
+    <label>What do people mostly say in comments?</label>
+    <div class="radio-row" id="comment-type-row">
+      <div class="radio-btn active" data-val="relate">They relate / agree</div>
+      <div class="radio-btn" data-val="ask">They ask questions</div>
+      <div class="radio-btn" data-val="praise">They praise the writing</div>
+      <div class="radio-btn" data-val="refer">They refer someone</div>
+    </div>
+
+    <label>Have you made a direct offer in the last 30 days?</label>
+    <div class="radio-row" id="offer-row">
+      <div class="radio-btn active" data-val="0">No</div>
+      <div class="radio-btn" data-val="1">Once</div>
+      <div class="radio-btn" data-val="2">A few times</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">Step 4 — Get your results</div>
+    <label>Your name</label>
+    <input type="text" id="leadname" placeholder="Your name">
+    <label>Email or LinkedIn profile URL (so I can send your full breakdown)</label>
+    <input type="text" id="leademail" placeholder="you@email.com or linkedin.com/in/you">
+  </div>
+
+  <button class="run-btn" id="runBtn">Run my perception audit ↗</button>
+
+  <div class="results" id="results">
+    <hr class="divider">
+    <div class="section">
+      <div class="sec-title">Your perception scores</div>
+      <div class="score-grid">
+        <div class="score-card"><div class="score-num" id="s-clarity">—</div><div class="score-label">Clarity</div></div>
+        <div class="score-card"><div class="score-num" id="s-trust">—</div><div class="score-label">Trust</div></div>
+        <div class="score-card"><div class="score-num" id="s-commit">—</div><div class="score-label">Commitment</div></div>
+      </div>
+      <div id="bars"></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-title">What buyers are actually perceiving</div>
+      <div id="insights"></div>
+      <div style="margin-top:1rem">
+        <div id="gaps"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-title">Your next 3 moves</div>
+      <div id="moves"></div>
+    </div>
+
+    <div class="cta-block">
+      <h3>Want this fixed, not just diagnosed?</h3>
+      <p>Book a Profile & Positioning Diagnosis session — one deep audit, written report, clear direction on exactly what to change first.</p>
+      <a class="cta-btn" href="https://www.linkedin.com/in/safia-saher-2127b8195/" target="_blank">Message Safia on LinkedIn →</a>
+    </div>
+  </div>
+
+  <div class="footer-note">Built by Safia Saher · Silent LinkedIn Partner</div>
+</div>
+
+<script>
+document.querySelectorAll('.radio-row').forEach(row=>{
+  row.addEventListener('click', e=>{
+    const btn = e.target.closest('.radio-btn');
+    if(!btn) return;
+    row.querySelectorAll('.radio-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+function getVal(rowId){
+  const a = document.querySelector('#'+rowId+' .radio-btn.active');
+  return a ? a.dataset.val : '0';
+}
+
+document.getElementById('runBtn').addEventListener('click', runAudit);
+
+function runAudit(){
+  const headline = document.getElementById('headline').value.trim();
+  const icp = document.getElementById('icp').value.trim();
+  const outcome = document.getElementById('outcome').value.trim();
+  const posts = ['p1','p2','p3','p4','p5'].map(id=>document.getElementById(id).value.trim()).filter(Boolean);
+
+  const commentsVal = parseInt(getVal('comments-row'));
+  const dmsVal = parseInt(getVal('dms-row'));
+  const commentType = getVal('comment-type-row');
+  const offerVal = parseInt(getVal('offer-row'));
+
+  const hasHeadline = headline.length > 10;
+  const hasIcp = icp.length > 10;
+  const hasOutcome = outcome.length > 10;
+  const postCount = posts.length;
+
+  let clarity=0, trust=0, commit=0;
+
+  clarity += hasHeadline?20:0;
+  clarity += hasIcp?15:0;
+  clarity += hasOutcome?15:0;
+  clarity += postCount>=3?15:postCount*5;
+  clarity += commentsVal*8;
+
+  trust += dmsVal*18;
+  trust += commentType==='ask'?25:commentType==='refer'?30:commentType==='praise'?10:15;
+  trust += postCount>=4?20:postCount*4;
+  trust += commentsVal*5;
+
+  commit += offerVal*20;
+  commit += dmsVal*15;
+  commit += (commentType==='ask'||commentType==='refer')?20:10;
+  commit += commentsVal*5;
+  commit += hasOutcome?10:0;
+
+  clarity = Math.min(100, Math.round(clarity));
+  trust = Math.min(100, Math.round(trust));
+  commit = Math.min(100, Math.round(commit));
+
+  document.getElementById('s-clarity').textContent = clarity;
+  document.getElementById('s-trust').textContent = trust;
+  document.getElementById('s-commit').textContent = commit;
+
+  const signals = [
+    {name:'Profile → message match', val: hasHeadline&&hasIcp ? clarity : Math.round(clarity*0.6)},
+    {name:'Content consistency', val: postCount>=4 ? Math.min(100,clarity+10) : Math.round(clarity*0.7)},
+    {name:'Comment → conversation rate', val: dmsVal===2?85:dmsVal===1?55:25},
+    {name:'Offer visibility', val: offerVal===2?80:offerVal===1?45:10},
+    {name:'Buyer intent signal', val: commentType==='refer'?90:commentType==='ask'?70:commentType==='relate'?50:35},
+  ];
+
+  document.getElementById('bars').innerHTML = signals.map(s=>`
+    <div class="signal-row">
+      <span class="signal-name">${s.name}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${s.val}%"></div></div>
+      <span class="bar-score">${s.val}</span>
+    </div>`).join('');
+
+  const insightsData = [];
+  if(clarity<60) insightsData.push({title:'Buyers are confused about what you specifically do', text:'Your positioning describes a problem well but buyers can\'t easily picture who you work with and what changes for them. They think "interesting" not "I need this."'});
+  if(trust<60) insightsData.push({title:'Comments aren\'t converting because trust is still building', text:'People enjoy your thinking but don\'t yet feel urgency to reach out. They see you as a voice they follow, not a person they hire.'});
+  if(commit<40) insightsData.push({title:'Buyers don\'t know you\'re available to hire', text:'There\'s no visible commitment signal on your profile or content. Buyers can\'t hire someone they don\'t know is for hire.'});
+  if(commentType==='praise') insightsData.push({title:'You\'re attracting admirers, not buyers', text:'Comments praising your writing show people enjoy the content but aren\'t connecting it to their own problem.'});
+  if(commentType==='relate') insightsData.push({title:'Relatability is working — conversion isn\'t yet', text:'People feel seen by your content. The missing layer is showing them what happens next.'});
+  if(insightsData.length===0) insightsData.push({title:'Your perception signals are strong', text:'Buyers are receiving a consistent, clear signal. Focus now on sharpening commitment and making the next step obvious.'});
+
+  document.getElementById('insights').innerHTML = insightsData.map(i=>`
+    <div class="insight-block">
+      <div class="insight-title">${i.title}</div>
+      <div class="insight-text">${i.text}</div>
+    </div>`).join('');
+
+  const gapsData = [];
+  if(offerVal===0) gapsData.push({label:'No offer visible', level:'high'});
+  if(dmsVal===0) gapsData.push({label:'Comments not converting', level:'high'});
+  if(clarity<50) gapsData.push({label:'Positioning too broad', level:'high'});
+  if(commentType==='praise') gapsData.push({label:'Attracting admirers not buyers', level:'med'});
+  if(postCount<3) gapsData.push({label:'Too few posts to audit', level:'med'});
+  if(trust>=60) gapsData.push({label:'Trust building well', level:'low'});
+  if(gapsData.length===0) gapsData.push({label:'Strong foundation', level:'low'});
+
+  document.getElementById('gaps').innerHTML = gapsData.map(g=>`<span class="gap-tag gap-${g.level}">${g.label}</span>`).join('');
+
+  const movesData = [];
+  if(offerVal===0) movesData.push('Make one visible offer this week — not a pitch, a specific invitation. Put it in a post or your profile CTA.');
+  else movesData.push('Your offer exists — sharpen the outcome. Replace vague claims with one specific result a past client experienced.');
+  if(dmsVal<2) movesData.push('Reply to every comment with a question that moves the conversation forward. That one line opens DMs.');
+  else movesData.push('Your DM rate is healthy — focus on qualifying faster with one sharp question early in the conversation.');
+  if(clarity<70) movesData.push('Rewrite your headline to name the buyer\'s exact pain and one specific result.');
+  else movesData.push('Your clarity is strong. The next unlock is a case study post — real client, real before/after.');
+
+  document.getElementById('moves').innerHTML = movesData.map((m,i)=>`
+    <div class="insight-block" style="border-left-color:#8FCBA8">
+      <div class="insight-title">Move ${i+1}</div>
+      <div class="insight-text">${m}</div>
+    </div>`).join('');
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+
+  // Lead capture log (visible in browser console; replace with real backend later)
+  const lead = {
+    name: document.getElementById('leadname').value,
+    contact: document.getElementById('leademail').value,
+    headline, icp, outcome, posts, commentsVal, dmsVal, commentType, offerVal,
+    scores: {clarity, trust, commit}
+  };
+  console.log('LEAD CAPTURED:', lead);
+}
+</script>
+
+</body>
+</html>
